@@ -1,0 +1,74 @@
+//Copyright (C) 2019, CERN
+//This software is distributed under the terms of the GNU General Public
+//Licence version 3 (GPL Version 3), copied verbatim in the file "LICENSE".
+//In applying this license, CERN does not waive the privileges and immunities
+//granted to it by virtue of its status as Intergovernmental Organization
+//or submit itself to any jurisdiction.
+package ch.cern.opendays.Enums;
+
+public enum MessageStatusCodes {
+    NO_FAST_TRACK_TICKETS(2),
+    NO_DATA_TO_DISPLAY(1),
+    OK(0),
+    ERROR_MESSAGE_NOT_DEFINED(-1),
+    PASSCODE_CREATION_ERROR(-2),
+    OUT_OF_WORKFLOW_ERROR(-3),
+    INCORRECT_API_INPUT(-4),
+    IMPLEMENTATION_IS_MISSING(-5),
+    AUTOMATED_TEST_PASSCODE_ERROR(-6),
+    PASSCODE_VALIDATION_TRY_AGAIN(-7),
+    USER_NOT_REGISTERED(-10),
+    TOO_MANY_ACTIVE_PASSCODE(-11),
+    TOKEN_PARSE_ERROR(-12),
+    VISITOR_DETAILS_UPDATE_FAILED(-13),
+    VISITOR_DETAILS_LOAD_FAILED(-14),
+    VISITOR_TRANSPORT_TYPE_UPDATE_FAILED(-15),
+    VISITOR_TRANSPORT_TYPE_LOAD_FAILED(-16),
+    ARRIVAL_POINT_GET_AVAILABLE_DATES_LOAD_FAILED(-17),
+    ARRIVAL_POINT_GET_AVAILABLE_PLACES_LOAD_FAILED(-18),
+    ARRIVAL_POINT_UPDATE_FAILED(-19),
+    NEW_RESERVATION_CREATION_FAILED(-20),
+    RESERVATION_STATUS_CANCEL_UPDATE_FAILED(-21),
+    RESERVATION_STATUS_FINAL_UPDATE_FAILED(-22),
+    RESERVATION_STATUS_MODIFIED_UPDATE_FAILED(-23),
+    RESERVATION_DASHBOARD_SUMMARY_LOAD_FAILED(-24),
+    RESERVATION_SUMMARY_LOAD_FAILED(-25),
+    VISITOR_VALIDATION_MAX_SIX_VISITOR(-26),
+    VISITOR_VALIDATION_MIN_ONE_VISITOR(-27),
+    VISITOR_VALIDATION_AGE(-28),
+    VISITORS_REMOVE_FASTTRACK(-29),
+    ARRIVAL_DATE_NOT_AVAILABLE(-30),
+    NO_FREE_SPACE_FOR_TIMESLOT(-31),
+    VISITOR_VALIDATION_ADULT(-32),
+    VISITOR_VALIDATION_FAST_TRACK_AGE(-33),
+    POINT_OF_ORIGIN_FAILED_TO_RETREIVE(-34),
+    POINT_OF_ORIGIN_FAILED_TO_STORE(-35),
+    EMPTY_API_INPUT(-36),
+    UPDATE_EXISTING_RESERVATION_TOKEN_GENERATION_FAILED(-37),
+    UPDATE_EXISTING_RESERVATION_ARRIVAL_POINT_UPDATE_FAILED(-38),
+    UPDATE_EXISTING_RESERVATION_LOAD_BOOKED_VISITDAY(-39),
+    UPDATE_EXISTING_RESERVATION_LOAD_VISITOR_DETAILS(-40),
+    UPDATE_EXISITNG_RESERVATION_VISITOR_DETAILS(-41),
+    FAILED_TO_REREQUEST_RESERVATION_CONFIRMATION_MAIL(-42),
+    FAILED_TO_LOAD_AVAILABLE_PLACES_PER_DAYS(-43),
+    RESERVATION_UPDATE_NOT_ENOUGH_PLACE(-44),
+    RESERVATION_UPDATE_NOT_ENOUGH_FAST_TRACK_PLACE(-45);
+
+   private final int messageStatusCode;
+
+   private MessageStatusCodes(int messageStatusCode) {
+      this.messageStatusCode = messageStatusCode;
+   }
+
+   public int getStatusCode() {
+      return this.messageStatusCode;
+   }
+
+   public static MessageStatusCodes getStatusCode(int messageStatusCode) {
+      MessageStatusCodes found = ERROR_MESSAGE_NOT_DEFINED;
+      for (MessageStatusCodes messageCode : values())
+         if (messageCode.messageStatusCode == messageStatusCode)
+            found = messageCode;
+      return found;
+   }
+}
